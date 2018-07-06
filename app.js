@@ -11,10 +11,11 @@ const path         = require('path');
 
 
 mongoose.Promise = Promise;
+const dbUrl = process.env.DBURL;
 mongoose
-  .connect('mongodb://localhost/m2-0618-crud', {useMongoClient: true})
+  .connect(dbUrl, {useMongoClient: true})
   .then(() => {
-    console.log('Connected to Mongo!')
+    debug(`Connected to Mongo on ${dbUrl}`)
   }).catch(err => {
     console.error('Error connecting to mongo', err)
   });
@@ -47,12 +48,12 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 
 // default value for title local
-app.locals.title = 'Express - Generated with IronGenerator';
+app.locals.title = 'La libreria de Gabi';
 
 
 
-const index = require('./routes/index');
-app.use('/', index);
+const indexRouter = require('./routes/index');
+app.use('/', indexRouter);
 
 
 module.exports = app;

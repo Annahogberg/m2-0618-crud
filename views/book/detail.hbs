@@ -1,0 +1,11 @@
+<h2>{{book.title}} by {{book.author}} - ({{comments.length}} comentarios)</h2>
+<p>{{book.description}}</p>
+
+{{#each comments}}
+<div class="comment">
+    <p>{{text}}</p>
+</div>
+{{/each}}
+
+<a href="/books">Volver a la lista</a>
+
